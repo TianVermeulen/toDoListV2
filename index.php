@@ -49,6 +49,7 @@ $sql = "CREATE TABLE tasks (
     <label for="uDate" id="label">New Date:</label>
 	<input type="date" name="uDate" min="2019-01-01" max="2020-01-01" value="" >
     <input type="submit" name="update">
+  
 
     
 </form>
@@ -75,7 +76,7 @@ if(isset($_POST['submit'])){
 }
 }
 
-$sql = "SELECT id, task, due FROM tasks";
+$sql = "SELECT id, task, due FROM tasks ORDER BY task ASC";
 $result = $db->query($sql);
 
 if ($result->num_rows > 0) {
@@ -84,9 +85,10 @@ if ($result->num_rows > 0) {
         echo "<p id='p'>ID:" . $row["id"]."---->"."Task: " . $row["task"]."---->". "Due Date: " . $row["due"]."</p>";
         
     }
-} else {
-    echo "0 results";
-}
+} 
+    
+
+    
 
 if(isset($_POST['del'])){
     $del = $_POST['delT'];
